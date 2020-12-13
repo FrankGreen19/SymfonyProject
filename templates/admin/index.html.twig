@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <table class="mt-4 table">
+                    <thead class="bg-default white-text">
+                        <tr>
+                            <th>ФИО</th>
+                            <th>Температура</th>
+                            <th>Боль в горле</th>
+                            <th>Кашель</th>
+                            <th>Озноб</th>
+                            <th>Боль в мышцах</th>
+                            <th>Утомляемость</th>
+                            <th>Одышка</th>
+                            <th>Насморк</th>
+                            <th>Результат</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <td>{{ item.fio }}</td>
+                            <td>{{ item.temperature }}</td>
+                            <td>{{ item.soreThroat }}</td>
+                            <td>{{ item.cough }}</td>
+                            <td>{{ item.chills }}</td>
+                            <td>{{ item.musclePain }}</td>
+                            <td>{{ item.fatigue }}</td>
+                            <td>{{ item.dyspnea }}</td>
+                            <td>{{ item.runnyNose }}</td>
+                            <td>{{ item.result }}</td>
+                            <td>
+                                <a href="edit/{{ item.id }}" class="btn btn-outline-dark btn-sm">Изменить</a>
+                                <br>
+                                <a href="delete/{{ item.id }}" class="mt-1 btn btn-outline-danger btn-sm" onclick="return confirm('Удалить запись?')">Удалить</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

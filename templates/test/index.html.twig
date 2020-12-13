@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+
+    <div class="">
+        <p class="h-50 text-white text-center" style="background: {{ result.color }}; font-size: 1.5em">{{ result.status }}</p>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="d-flex justify-content-center">
+                    <div class="mt-3 card w-50">
+                        <div class="card-header text-center">
+                            <h4>Заполните форму</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <form action="/test" method="post">
+                                <input type="text" id="p1" name="p1" class="form-control mt-3" placeholder="ФИО"/>
+                                <input type="text" id="p3" name="p3" class="form-control mt-1" placeholder="Температура(через точку!)"/>
+                                <input type="text" id="p5" name="p5" class="form-control mt-1" placeholder="Боль в горле(да/нет)"/>
+                                <input type="text" id="p6" name="p6" class="form-control mt-1" placeholder="Кашель?(да/нет)"/>
+                                <input type="text" id="p7" name="p7" class="form-control mt-1" placeholder="Озноб?(да/нет)"/>
+                                <input type="text" id="p8" name="p8" class="form-control mt-1" placeholder="Боль в мышцах?(да/нет) " />
+                                <input type="text" id="p9" name="p9" class="form-control mt-1" placeholder="Утомляемость?(да/нет)"/>
+                                <input type="text" id="p10" name="p10" class="form-control mt-1" placeholder="Одышка?(да/нет)"/>
+                                <input type="text" id="p11" name="p11" class="form-control mt-1" placeholder="Заложен нос?(да/нет) " />
+
+                                <input type="button" id="but1" value="Диагностика" class="btn btn-default mt-3" onclick="getDiagnosis(form)"/>
+                                <input type="submit" id="but2" value="Сохранить результат" class="btn btn-default mt-3"/>
+
+                                <textarea id="myTextarea" name="result" class="form-control mt-3" rows="10" cols="30"></textarea>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/ScriptsRS.js') }}"></script>
+{% endblock %}

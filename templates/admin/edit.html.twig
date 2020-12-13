@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="mt-4 w-50 mx-auto card">
+                    <div class="card-header bg-default white-text text-center">
+                        <p>Редактирование</p>
+                    </div>
+                    <div class="card-body text-center">
+                        <form method="post" action="/admin/update">
+                            {% for item in recording %}
+                                <label class="mt-1" for="id">ID</label><input type="text" id="id" name="id" class="form-control mt-1" placeholder="ФИО" value="{{ item.id }}" readonly/>
+                                <label class="mt-1" for="p1">ФИО</label><input type="text" id="p1" name="p1" class="form-control mt-1" placeholder="ФИО" value="{{ item.fio }}"/>
+                                <label class="mt-1" for="p3">Температура</label><input type="text" id="p3" name="p3" class="form-control mt-1" placeholder="Температура(через точку!)" value="{{ item.temperature }}"/>
+                                <label class="mt-1" for="p5">Боль в горле</label><input type="text" id="p5" name="p5" class="form-control mt-1" placeholder="Боль в горле(да/нет)" value="{{ item.soreThroat }}"/>
+                                <label class="mt-1" for="p6">Кашель</label><input type="text" id="p6" name="p6" class="form-control mt-1" placeholder="Кашель?(да/нет)" value="{{ item.cough }}"/>
+                                <label class="mt-1" for="p7">Озноб</label><input type="text" id="p7" name="p7" class="form-control mt-1" placeholder="Озноб?(да/нет)" value="{{ item.chills }}"/>
+                                <label class="mt-1" for="p8">Боль в мышцах</label><input type="text" id="p8" name="p8" class="form-control mt-1" placeholder="Боль в мышцах?(да/нет)" value="{{ item.musclePain }}"/>
+                                <label class="mt-1" for="p9">Утомляемость</label><input type="text" id="p9" name="p9" class="form-control mt-1" placeholder="Утомляемость?(да/нет)" value="{{ item.fatigue }}"/>
+                                <label class="mt-1" for="p10">Одышка</label><input type="text" id="p10" name="p10" class="form-control mt-1" placeholder="Одышка?(да/нет)" value="{{ item.dyspnea }}"/>
+                                <label class="mt-1" for="p11">Насморк</label><input type="text" id="p11" name="p11" class="form-control mt-1" placeholder="Заложен нос?(да/нет)" value="{{ item.runnyNose }}"/>
+                            {% endfor %}
+
+                            <input type="button" id="but1" value="Диагностика" class="btn btn-outline-dark btn-md mt-3" onclick="getDiagnosis(form)"/>
+                            <br>
+                            <input type="submit" id="but2" value="Отправить" class="btn btn-outline-dark btn-md mt-1"/>
+
+                            <textarea id="myTextarea" name="result" class="form-control mt-3" rows="10" cols="30" hidden></textarea>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/ScriptsRS.js') }}"></script>
+{% endblock %}
+
